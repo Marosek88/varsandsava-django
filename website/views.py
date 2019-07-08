@@ -25,6 +25,7 @@ def en(request):
             temp_email.save()
             messages.success(request, f'Hello {posted_email}! We\'ll get in touch with you very soon!')
         
+        # Connext for English version
         context = {
             "lang": "en",
             "title": "Vars&Sava Devs - Coming Soon",
@@ -38,7 +39,7 @@ def en(request):
         context = {
             "lang": "en",
             "title": "Vars&Sava Devs - Coming Soon",
-            "text1": "Greatness in making",
+            "text1": "Greatness in the making",
             "text2": "Vars&Sava Devs are writing, re-writing and polishing their first site to dazzle you with the highest standard of websites! Be sure to check us out in",
             "text3": "September 2019",
         }
@@ -62,6 +63,7 @@ def pl(request):
             temp_email.save()
             messages.success(request, f'Cześć {posted_email}! Wkrótce się odezwiemy!')
         
+        # Context for Polish version
         context = {
             "lang": "pl",
             "title": "Vars&Sava Devs - Coming Soon",
