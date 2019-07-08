@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{ title }}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/coming-soon.css' %}" rel="stylesheet">
+  
+  <!-- Add Favicon -->
+  <link rel="icon" type="image.png" href="{% static 'img/favicon.png' %}">
+
+</head>
+
+<body>
+
+{% if messages %} {% for message in messages %}
+<div id="messages" class="alert alert-{{ message.tags }}">
+  <div class="alert-in">
+    {{ message }}
+  </div>  
+</div>
+{% endfor %} {% endif %}
+
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{% static 'mp4/bg.mp4' %}" type="video/mp4">
+  </video>
+
+  <div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100">
+        
+        <div class="masthead-logo">
+            <img src="{% static 'img/logo_small2.png' %}">
+        </div>
+
+        <div class="col-12 mb-auto my-md-auto">
+          <div class="masthead-content text-white">
+            <h1 class="mb-3">{{ text1 }}</h1>
+            <p class="mb-2">{{ text2 }} <strong>{{ text3 }}</strong></p>
+          </div>
+        </div>
+        
+        <div class="col-12 mt-3">
+          <form action="{% if lang == 'pl' %}{% url 'pl' %}{% else %}{% url 'en' %}{% endif %}" method="POST">
+            {% csrf_token %}
+          <div class="masthead-content">
+          <div class="input-group input-group-newsletter">
+            
+            <input type="email" name="email" class="form-control" placeholder="{% if lang == 'pl' %}Wpisz swój email{% else %}Enter your email{% endif %}" aria-label="Enter your email..." aria-describedby="basic-addon">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">{% if lang == 'pl' %}Nawiąż kontakt!{% else %}Get in Touch!{% endif %}</button>
+            </div>
+          </div>
+          </div>
+          </form>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+
+  <div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+      <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="https://www.facebook.com/VarsSava-Devs-332615457672788/" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="language-button">
+    <div class="language-box">
+      {% if lang == "pl" %}<div class="language-pl pl-active">{% else %}<div class="language-pl cursor-pointer" onclick="location.href='{% url 'pl' %}';">{% endif %}
+        &nbsp;
+      </div>
+      {% if lang == "en" %}<div class="language-en en-active">{% else %}<div class="language-en cursor-pointer" onclick="location.href='{% url 'en' %}';">{% endif %}
+        &nbsp;
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/coming-soon.js' %}"></script>
+
+</body>
+
+</html>
